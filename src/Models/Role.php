@@ -2,7 +2,7 @@
 
 namespace Spatie\Permission\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Jenssegers\Mongodb\Model as Model;
 use Spatie\Permission\Exceptions\RoleDoesNotExist;
 use Spatie\Permission\Traits\HasPermissions;
 use Spatie\Permission\Traits\RefreshesPermissionCache;
@@ -12,7 +12,8 @@ class Role extends Model
     use HasPermissions;
     use RefreshesPermissionCache;
 
-    public $guarded = ['id'];
+    public $guarded = ['_id'];
+    public $collection = 'roles';
 
     /**
      * A role may be given various permissions.
